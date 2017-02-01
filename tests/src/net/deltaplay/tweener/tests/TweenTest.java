@@ -99,7 +99,7 @@ public class TweenTest extends ApplicationAdapter {
                 Tweener.parallel(
                         Tweener.sequence(
                                 Tweener.tween(sprite3, SpriteAccessor.ROTATION)
-                                        .to(0).duration(0),
+                                        .to(0),
                                 Tweener.tween(sprite3, SpriteAccessor.SCALE)
                                         .to(1f, 0.5f).duration(1f).interp(Interpolation.elastic),
                                 Tweener.tween(sprite3, SpriteAccessor.SCALE)

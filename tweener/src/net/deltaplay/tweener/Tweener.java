@@ -297,7 +297,7 @@ public class Tweener {
 
             float percent = duration == 0 ? 1f : Math.min(1f, time / duration);
 
-            if (interpolation != null) interpolation.apply(percent);
+            if (interpolation != null) percent = interpolation.apply(percent);
 
             accessor.get(object, current);
 
@@ -316,7 +316,7 @@ public class Tweener {
                     }
                 }
 
-                current[i] = absFrom + (absTo - absFrom) * interpolation.apply(percent);
+                current[i] = absFrom + (absTo - absFrom) * percent;
             }
 
             accessor.set(object, current);
