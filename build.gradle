@@ -1,14 +1,17 @@
-subprojects {
-    apply plugin: "eclipse"
-    apply plugin: "idea"
-    apply plugin: "java"
+apply plugin: "java"
+apply plugin: "maven-publish"
 
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-    }
+sourceCompatibility = 1.6
+
+javadoc {
+    title = 'Tweener'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 ext {
@@ -27,20 +30,30 @@ if (JavaVersion.current().isJava8Compatible()) {
     }
 }
 
-project(":tweener") {
+dependencies {
+    compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+    testCompile "junit:junit:$jUnitVersion"
+    testCompile "org.mockito:mockito-core:$mockitoVersion"
+}
 
-    dependencies {
-        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-        testCompile "junit:junit:$jUnitVersion"
-        testCompile "org.mockito:mockito-core:$mockitoVersion"
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            groupId 'net.deltaplay.tweener'
+            artifactId 'tweener'
+            version '0.0.2-SNAPSHOT'
+
+            artifact sourceJar {
+                classifier "sources"
+            }
+        }
     }
 }
 
-project(":tests") {
-    dependencies {
-        compile project(":tweener")
-        compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-    }
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
 }
 
