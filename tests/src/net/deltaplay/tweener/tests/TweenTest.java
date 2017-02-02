@@ -17,19 +17,19 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import net.deltaplay.tweener.Tweener;
-import net.deltaplay.tweener.Tweener.TimeTween;
+import net.deltaplay.tweener.TimeTween;
 import net.deltaplay.tweener.Tweener.Tween;
 import net.deltaplay.tweener.Tweener.TweenAccessor;
 
 public class TweenTest extends ApplicationAdapter {
+    private static final Color COLOR1 = Color.valueOf("#6BB4D5");
+    private static final Color COLOR2 = Color.valueOf("#F04A4A");
+
     private SpriteBatch batch;
     private Viewport viewport;
     private ShapeRenderer renderer;
 
-    private Texture texture;
     private Sprite sprite1, sprite2, sprite3;
-    private Color color1 = Color.valueOf("#6BB4D5");
-    private Color color2 = Color.valueOf("#F04A4A");
     private Tween tween1, tween3, tween2;
     private TimeTween progressTween;
 
@@ -43,7 +43,7 @@ public class TweenTest extends ApplicationAdapter {
         batch = new SpriteBatch();
         renderer = new ShapeRenderer();
 
-        texture = new Texture(Gdx.files.internal("data/circle.png"));
+        Texture texture = new Texture(Gdx.files.internal("data/circle.png"));
         texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
         sprite1 = new Sprite(texture);
@@ -84,14 +84,14 @@ public class TweenTest extends ApplicationAdapter {
                         .add(Tweener.tween(sprite2, SpriteAccessor.ROTATION)
                                 .to(360).duration(duration))
                         .add(Tweener.tween(sprite2, SpriteAccessor.RGB)
-                                .to(color1.r, color1.g, color1.b).duration(duration))
+                                .to(COLOR1.r, COLOR1.g, COLOR1.b).duration(duration))
                 ).add(Tweener.parallel()
                         .add(Tweener.tween(sprite2, SpriteAccessor.POS)
                                 .to(0, 0).duration(duration))
                         .add(Tweener.tween(sprite2, SpriteAccessor.ROTATION)
                                 .to(0).duration(duration))
                         .add(Tweener.tween(sprite2, SpriteAccessor.RGB)
-                                .to(color2.r, color2.g, color2.b).duration(duration))
+                                .to(COLOR2.r, COLOR2.g, COLOR2.b).duration(duration))
                 ).add(Tweener.delay(0.5f))
         );
 
@@ -105,7 +105,7 @@ public class TweenTest extends ApplicationAdapter {
                                 Tweener.tween(sprite3, SpriteAccessor.SCALE)
                                         .to(1f, 1f).duration(1f),
                                 Tweener.tween(sprite3, SpriteAccessor.ROTATION)
-                                        .to(true, 360).duration(0.5f),
+                                        .to(360).duration(0.5f).relative(true),
                                 Tweener.delay(0.1f)
                         ), Tweener.sequence(
                                 Tweener.tween(sprite3, SpriteAccessor.ALPHA)
