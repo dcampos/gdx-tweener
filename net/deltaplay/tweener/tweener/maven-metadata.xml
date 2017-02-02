@@ -3,10 +3,10 @@
   <groupId>net.deltaplay.tweener</groupId>
   <artifactId>tweener</artifactId>
   <versioning>
-    <release>0.0.1</release>
+    <release>0.0.2</release>
     <versions>
-      <version>0.0.1</version>
+      <version>0.0.2</version>
     </versions>
-    <lastUpdated>20170202005612</lastUpdated>
+    <lastUpdated>20170202124111</lastUpdated>
   </versioning>
 </metadata>
