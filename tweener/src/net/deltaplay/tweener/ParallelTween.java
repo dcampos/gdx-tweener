@@ -1,12 +1,6 @@
 package net.deltaplay.tweener;
 
-import com.badlogic.gdx.utils.Array;
-import net.deltaplay.tweener.Tweener.BaseTween;
-import net.deltaplay.tweener.Tweener.Tween;
-
-public class ParallelTween extends BaseTween {
-
-    Array<Tween> tweens = new Array<Tween>();
+public class ParallelTween extends CompositeTween<ParallelTween> {
 
     public ParallelTween() {
     }
@@ -23,28 +17,9 @@ public class ParallelTween extends BaseTween {
         }
     }
 
-    public ParallelTween add(Tween tween) {
-        tweens.add(tween);
+    @Override
+    public ParallelTween getThis() {
         return this;
     }
 
-    public ParallelTween add(Tween... tweens) {
-        this.tweens.addAll(tweens);
-        return this;
-    }
-
-    @Override
-    public void restart() {
-        finished = false;
-
-        for (int i = 0; i < tweens.size; i++) {
-            tweens.get(i).restart();
-        }
-    }
-
-    @Override
-    public void reset() {
-        super.reset();
-        tweens.clear();
-    }
 }

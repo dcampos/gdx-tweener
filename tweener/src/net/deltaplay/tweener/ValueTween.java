@@ -25,6 +25,7 @@ public class ValueTween extends TimeTween {
 
     ValueTween size(int size) {
         if (this.size != size || this.from == null) {
+            this.size = size;
             from = new float[size];
             to = new float[size];
             current = new float[size];
@@ -34,7 +35,7 @@ public class ValueTween extends TimeTween {
         return this;
     }
 
-    public ValueTween object(Object object) {
+    ValueTween object(Object object) {
         this.object = object;
         return this;
     }
@@ -51,12 +52,78 @@ public class ValueTween extends TimeTween {
         initialized = true;
     }
 
-    public ValueTween from( float... values) {
+    public ValueTween from(float v1) {
+        if (accessor.getCount() > 1)
+            throw new GdxRuntimeException("Wrong value count!");
+
+        from[0] = v1;
+
+        hasFrom = true;
+        return this;
+    }
+
+    public ValueTween from(float v1, float v2) {
+        if (accessor.getCount() > 2)
+            throw new GdxRuntimeException("Wrong value count!");
+
+        from[0] = v1;
+        from[1] = v2;
+
+        hasFrom = true;
+        return this;
+    }
+
+    public ValueTween from(float v1, float v2, float v3) {
+        if (accessor.getCount() > 3)
+            throw new GdxRuntimeException("Wrong value count!");
+
+        from[0] = v1;
+        from[1] = v2;
+        from[1] = v3;
+
+        hasFrom = true;
+        return this;
+    }
+
+    public ValueTween from(float... values) {
         if (values.length != accessor.getCount())
             throw new GdxRuntimeException("Wrong value count!");
 
         System.arraycopy(values, 0, from, 0, accessor.getCount());
         hasFrom = true;
+        return this;
+    }
+
+    public ValueTween to(float v1) {
+        if (accessor.getCount() > 1)
+            throw new GdxRuntimeException("Wrong value count!");
+
+        to[0] = v1;
+
+        hasTo = true;
+        return this;
+    }
+
+    public ValueTween to(float v1, float v2) {
+        if (accessor.getCount() > 2)
+            throw new GdxRuntimeException("Wrong value count!");
+
+        to[0] = v1;
+        to[1] = v2;
+
+        hasTo = true;
+        return this;
+    }
+
+    public ValueTween to(float v1, float v2, float v3) {
+        if (accessor.getCount() > 3)
+            throw new GdxRuntimeException("Wrong value count!");
+
+        to[0] = v1;
+        to[1] = v2;
+        to[1] = v3;
+
+        hasTo = true;
         return this;
     }
 
@@ -69,8 +136,8 @@ public class ValueTween extends TimeTween {
         return this;
     }
 
-    public ValueTween relative(boolean relative) {
-        this.isRelative = relative;
+    public ValueTween relative() {
+        this.isRelative = true;
         return this;
     }
 
@@ -79,7 +146,7 @@ public class ValueTween extends TimeTween {
         return this;
     }
 
-    public ValueTween accessor(TweenAccessor accessor) {
+    ValueTween accessor(TweenAccessor accessor) {
         this.accessor = (TweenAccessor<Object>) accessor;
         return this;
     }

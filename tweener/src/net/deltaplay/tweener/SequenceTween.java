@@ -1,15 +1,10 @@
 package net.deltaplay.tweener;
 
 import com.badlogic.gdx.utils.Pool.Poolable;
-import net.deltaplay.tweener.Tweener.Tween;
 
-public class SequenceTween extends ParallelTween implements Poolable {
+public class SequenceTween extends CompositeTween<SequenceTween> implements Poolable {
 
     public SequenceTween() {
-    }
-
-    public SequenceTween(Tween... tweens) {
-        this.tweens.addAll(tweens);
     }
 
     private int current = 0;
@@ -38,5 +33,10 @@ public class SequenceTween extends ParallelTween implements Poolable {
     public void reset() {
         super.reset();
         current = 0;
+    }
+
+    @Override
+    public SequenceTween getThis() {
+        return this;
     }
 }

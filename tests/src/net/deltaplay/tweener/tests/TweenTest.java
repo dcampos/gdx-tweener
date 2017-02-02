@@ -82,7 +82,7 @@ public class TweenTest extends ApplicationAdapter {
                                 .to(viewport.getWorldWidth() - sprite2.getWidth(), 0).duration(duration)
                                 .interp(Interpolation.bounceOut))
                         .add(Tweener.tween(sprite2, SpriteAccessor.ROTATION)
-                                .to(360).duration(duration))
+                                .to(-360).duration(duration))
                         .add(Tweener.tween(sprite2, SpriteAccessor.RGB)
                                 .to(COLOR1.r, COLOR1.g, COLOR1.b).duration(duration))
                 ).add(Tweener.parallel()
@@ -105,7 +105,7 @@ public class TweenTest extends ApplicationAdapter {
                                 Tweener.tween(sprite3, SpriteAccessor.SCALE)
                                         .to(1f, 1f).duration(1f),
                                 Tweener.tween(sprite3, SpriteAccessor.ROTATION)
-                                        .to(360).duration(0.5f).relative(true),
+                                        .to(360).duration(0.5f).relative(),
                                 Tweener.delay(0.1f)
                         ), Tweener.sequence(
                                 Tweener.tween(sprite3, SpriteAccessor.ALPHA)

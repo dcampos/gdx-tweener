@@ -21,7 +21,7 @@ public class Tweener {
     }
 
     public static SequenceTween sequence(Tween... tweens) {
-        return Pools.obtain(SequenceTween.class);
+        return Pools.obtain(SequenceTween.class).add(tweens);
     }
 
     public static RepeatTween repeat() {
