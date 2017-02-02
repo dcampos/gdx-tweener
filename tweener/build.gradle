@@ -6,10 +6,10 @@ sourceSets.main.resources.srcDirs = [ "src/" ]
 sourceSets.test.java.srcDirs = [ "tests/" ]
 sourceSets.test.resources.srcDirs = [ "tests/" ]
 
-javadoc {
-    title = 'Tweener'
+dependencies {
+    compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 }
 
-eclipse.project {
-    name = projectGroup + "-core"
+javadoc {
+    title = 'Tweener'
 }
