@@ -1,5 +1,7 @@
 package net.deltaplay.tweener;
 
+import net.deltaplay.tweener.Tweener.Tween;
+
 public class TweenManager extends CompositeTween<TweenManager> {
 
     @Override
@@ -12,5 +14,9 @@ public class TweenManager extends CompositeTween<TweenManager> {
     @Override
     public TweenManager getThis() {
         return this;
+    }
+
+    public void remove(Tween tween) {
+        tweens.removeValue(tween, false);
     }
 }
