@@ -19,4 +19,8 @@ public class TweenManager extends CompositeTween<TweenManager> {
     public void remove(Tween tween) {
         tweens.removeValue(tween, false);
     }
+
+    public void clear() {
+        tweens.clear();
+    }
 }

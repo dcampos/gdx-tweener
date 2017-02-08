@@ -35,5 +35,9 @@ public abstract class CompositeTween<T extends CompositeTween> extends BaseTween
         tweens.clear();
     }
 
+    public Array<Tween> getTweens() {
+        return tweens;
+    }
+
     public abstract T getThis();
 }

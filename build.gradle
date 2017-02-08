@@ -32,8 +32,10 @@ if (JavaVersion.current().isJava8Compatible()) {
 
 dependencies {
     compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-    testCompile "junit:junit:$jUnitVersion"
-    testCompile "org.mockito:mockito-core:$mockitoVersion"
+    //testCompile "junit:junit:$jUnitVersion"
+    //testCompile "org.mockito:mockito-core:$mockitoVersion"
+    compile "org.codehaus.groovy:groovy-all:2.4.1"
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 }
 
 
