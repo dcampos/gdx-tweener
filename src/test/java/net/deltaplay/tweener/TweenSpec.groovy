@@ -91,30 +91,35 @@ class TweenSpec extends Specification {
         color.equals(Color.WHITE)
     }
 
-}
+    def "Should be restarted"() {
+        given:
+        Tweener.Tween tween = Tweener.tween(test1)
+            .to(1, 1).duration(1f)
 
-class SequenceSpec extends Specification {
-    TestAccessor test1
-    TestAccessor test2
-    TestAccessor test3
+        when:
+        tween.update(1f)
 
-    void setup() {
-        test1 = new TestAccessor(0, 0)
-        test2 = new TestAccessor(0, 0)
-        test3 = new TestAccessor(0, 0)
+        then:
+        test1.a == 1
+        test1.b == 1
+
+        when:
+        tween.restart()
+
+        then:
+        !tween.finished()
+        tween.time == 0
     }
 
-    void cleanup() {
-
-    }
-
-    def "Should update only current tween"() {
+    def "Sequence should update only current tween"() {
         given:
         Tweener.Tween tween1 = Tweener.tween(test1)
                 .to(10f, 10f).duration(1f)
         Tweener.Tween tween2 = Tweener.tween(test2)
                 .to(50f, 40f).duration(1f)
-        SequenceTween sequenceTween = Tweener.sequence(tween1, tween2)
+        Tweener.Tween tween3 = Tweener.tween(test3)
+                .to(6.2f, 4.5f).duration(1f)
+        SequenceTween sequenceTween = Tweener.sequence(tween1, tween2, tween3)
 
         when:
         sequenceTween.update(1f)
@@ -122,36 +127,23 @@ class SequenceSpec extends Specification {
         then:
         test1.a == 10f
         test1.b == 10f
-        test2.a == 0f
-        test2.b == 0f
 
         when:
         sequenceTween.update(1f)
 
         then:
-        test1.a == 10f
-        test1.b == 10f
         test2.a == 50f
         test2.b == 40f
-    }
-}
 
-class Parallel extends Specification {
-    TestAccessor test1
-    TestAccessor test2
-    TestAccessor test3
+        when:
+        sequenceTween.update(1f)
 
-    void setup() {
-        test1 = new TestAccessor(0, 0)
-        test2 = new TestAccessor(0, 0)
-        test3 = new TestAccessor(0, 0)
+        then:
+        test3.a == 6.2f
+        test3.b == 4.5f
     }
 
-    void cleanup() {
-
-    }
-
-    def "Should update all tweens"() {
+    def "Parallel should update all tweens"() {
         given:
         Tweener.Tween tween1 = Tweener.tween(test1)
                 .to(10f, 10f).duration(1f)
