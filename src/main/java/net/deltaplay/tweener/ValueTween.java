@@ -53,7 +53,7 @@ public class ValueTween extends TimeTween {
     }
 
     public ValueTween from(float v1) {
-        if (accessor.getCount() > 1)
+        if (accessor.getCount() != 1)
             throw new GdxRuntimeException("Wrong value count!");
 
         from[0] = v1;
@@ -63,7 +63,7 @@ public class ValueTween extends TimeTween {
     }
 
     public ValueTween from(float v1, float v2) {
-        if (accessor.getCount() > 2)
+        if (accessor.getCount() != 2)
             throw new GdxRuntimeException("Wrong value count!");
 
         from[0] = v1;
@@ -74,7 +74,7 @@ public class ValueTween extends TimeTween {
     }
 
     public ValueTween from(float v1, float v2, float v3) {
-        if (accessor.getCount() > 3)
+        if (accessor.getCount() != 3)
             throw new GdxRuntimeException("Wrong value count!");
 
         from[0] = v1;
@@ -95,7 +95,7 @@ public class ValueTween extends TimeTween {
     }
 
     public ValueTween to(float v1) {
-        if (accessor.getCount() > 1)
+        if (accessor.getCount() != 1)
             throw new GdxRuntimeException("Wrong value count!");
 
         to[0] = v1;
@@ -105,7 +105,7 @@ public class ValueTween extends TimeTween {
     }
 
     public ValueTween to(float v1, float v2) {
-        if (accessor.getCount() > 2)
+        if (accessor.getCount() != 2)
             throw new GdxRuntimeException("Wrong value count!");
 
         to[0] = v1;
@@ -116,7 +116,7 @@ public class ValueTween extends TimeTween {
     }
 
     public ValueTween to(float v1, float v2, float v3) {
-        if (accessor.getCount() > 3)
+        if (accessor.getCount() != 3)
             throw new GdxRuntimeException("Wrong value count!");
 
         to[0] = v1;
