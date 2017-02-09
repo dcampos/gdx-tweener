@@ -15,8 +15,9 @@ public class ValueTween extends TimeTween {
     private float[] start;
 
     private boolean hasFrom, hasTo, isRelative;
-    private TweenAccessor<Object> accessor;
     private boolean initialized;
+
+    private TweenAccessor<Object> accessor;
     private Interpolation interpolation = Interpolation.linear;
     private Object object;
 
