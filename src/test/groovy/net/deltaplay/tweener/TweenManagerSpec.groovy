@@ -26,7 +26,7 @@ class TweenManagerSpec extends Specification {
         when:
             manager.add(tween2)
         then:
-            manager.getTweens().size == 1
+            manager.getTweens().size == 2
 
     }
 
