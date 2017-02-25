@@ -27,7 +27,6 @@ class TweenManagerSpec extends Specification {
         then:
             manager.getTweens().size == 2
 
-
     }
 
     def "Tweens should be cleared"() {
