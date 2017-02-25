@@ -3,6 +3,7 @@ apply plugin: "groovy"
 apply plugin: "maven-publish"
 
 sourceCompatibility = 1.6
+targetCompatibility = 1.6
 
 javadoc {
     title = 'Tweener'
@@ -22,6 +23,15 @@ ext {
     mockitoVersion = "1.10.19"
 }
 
+//sourceSets {
+//    main {
+//        java.srcDir "src/main/java"
+//    }
+//    test {
+//        java.srcDir "src/test/groovy"
+//    }
+//}
+
 /** needed to disable Java 8 doclint which throws errors **/
 if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
@@ -33,7 +43,7 @@ if (JavaVersion.current().isJava8Compatible()) {
 
 dependencies {
     compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-    compile "org.codehaus.groovy:groovy-all:2.4.4"
+    testCompile "org.codehaus.groovy:groovy-all:2.4.4"
     testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 }
 

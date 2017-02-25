@@ -15,7 +15,8 @@ class TweenManagerSpec extends Specification {
     def "Tweens should be added"() {
         given:
             Tweener.Tween tween1 = tween(new TestAccessor(0, 0))
-            Tweener.Tween tween2 = tween(new TestAccessor(0, 0))
+        def tween2
+        tween2 = tween(new TestAccessor(0, 0))
 
         when:
             manager.add(tween1)
@@ -25,7 +26,7 @@ class TweenManagerSpec extends Specification {
         when:
             manager.add(tween2)
         then:
-            manager.getTweens().size == 2
+            manager.getTweens().size == 1
 
     }
 
