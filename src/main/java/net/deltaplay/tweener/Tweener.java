@@ -80,6 +80,20 @@ public class Tweener {
             this.onUpdate = callback;
             return this;
         }
+
+        @Override
+        public void update(float delta) {
+            updateImpl(delta);
+
+            runOnUpdate();
+        }
+
+        protected void runOnUpdate() {
+            if (onUpdate != null)
+                onUpdate.run();
+        }
+
+        public abstract void updateImpl(float delta);
     }
 
 }

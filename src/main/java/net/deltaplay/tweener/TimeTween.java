@@ -7,22 +7,15 @@ public class TimeTween extends BaseTween {
     float time;
 
     @Override
-    public void update(float delta) {
+    public void updateImpl(float delta) {
         if (finished()) return;
 
         time += delta;
-
-        runOnUpdate();
 
         if (time >= duration) {
             time = duration;
             finished = true;
         }
-    }
-
-    private void runOnUpdate() {
-        if (onUpdate != null)
-            onUpdate.run();
     }
 
     @Override

@@ -22,7 +22,7 @@ public class RepeatTween extends BaseTween {
     }
 
     @Override
-    public void update(float delta) {
+    public void updateImpl(float delta) {
         tween.update(delta);
         if (tween.finished()) {
             repeated++;

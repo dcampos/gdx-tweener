@@ -1,14 +1,12 @@
 package net.deltaplay.tweener;
 
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.DelayedRemovalArray;
 import net.deltaplay.tweener.Tweener.BaseTween;
 import net.deltaplay.tweener.Tweener.Tween;
 
 public abstract class CompositeTween<T extends CompositeTween> extends BaseTween {
-    Array<Tween> tweens = new Array<Tween>();
-
-    @Override
-    public abstract void update(float delta);
+    DelayedRemovalArray<Tween> tweens = new DelayedRemovalArray<Tween>();
 
     public T add(Tween tween) {
         tweens.add(tween);

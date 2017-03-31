@@ -6,7 +6,7 @@ public class ParallelTween extends CompositeTween<ParallelTween> {
     }
 
     @Override
-    public void update(float delta) {
+    public void updateImpl(float delta) {
         if (finished) return;
 
         finished = true;

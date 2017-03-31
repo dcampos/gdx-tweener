@@ -7,8 +7,14 @@ public class TweenManager extends CompositeTween<TweenManager> {
     @Override
     public void update(float delta) {
         for (int i = 0; i < tweens.size; i++) {
-            tweens.get(i).update(delta);
+            Tween tween = tweens.get(i);
+            if (tween.finished()) tweens.removeIndex(i);
+            else tweens.get(i).update(delta);
         }
+    }
+
+    @Override
+    public void updateImpl(float delta) {
     }
 
     @Override

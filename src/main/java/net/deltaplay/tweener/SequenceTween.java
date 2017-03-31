@@ -10,7 +10,7 @@ public class SequenceTween extends CompositeTween<SequenceTween> implements Pool
     private int current = 0;
 
     @Override
-    public void update(float delta) {
+    public void updateImpl(float delta) {
         if (tweens.size <= current) {
             finished = true;
             return;
