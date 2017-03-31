@@ -12,10 +12,17 @@ public class TimeTween extends BaseTween {
 
         time += delta;
 
+        runOnUpdate();
+
         if (time >= duration) {
             time = duration;
             finished = true;
         }
+    }
+
+    private void runOnUpdate() {
+        if (onUpdate != null)
+            onUpdate.run();
     }
 
     @Override

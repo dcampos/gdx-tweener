@@ -58,10 +58,12 @@ public class Tweener {
         void update(float delta);
         boolean finished();
         void restart();
+        Tween onUpdate(Runnable callback);
     }
 
     public abstract static class BaseTween implements Tween, Poolable {
         boolean finished;
+        Runnable onUpdate;
 
         @Override
         public boolean finished() {
@@ -71,6 +73,12 @@ public class Tweener {
         @Override
         public void reset() {
             finished = false;
+        }
+
+        @Override
+        public Tween onUpdate(Runnable callback) {
+            this.onUpdate = callback;
+            return this;
         }
     }
 
