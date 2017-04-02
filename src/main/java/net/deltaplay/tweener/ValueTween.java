@@ -142,11 +142,6 @@ public class ValueTween extends TimeTween<ValueTween> {
         return this;
     }
 
-    public ValueTween duration(float duration) {
-        super.duration(duration);
-        return this;
-    }
-
     ValueTween accessor(TweenAccessor accessor) {
         this.accessor = (TweenAccessor<Object>) accessor;
         return this;

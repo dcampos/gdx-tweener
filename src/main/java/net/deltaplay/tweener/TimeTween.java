@@ -28,9 +28,9 @@ public class TimeTween<T extends TimeTween> extends BaseTween<T> {
         finished = false;
     }
 
-    public TimeTween duration(float delay) {
+    public T duration(float delay) {
         this.duration = delay;
-        return this;
+        return getThis();
     }
 
     public float getTime() {
