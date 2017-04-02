@@ -2,9 +2,13 @@ package net.deltaplay.tweener;
 
 import net.deltaplay.tweener.Tweener.BaseTween;
 
-public class TimeTween extends BaseTween {
+public class TimeTween<T extends TimeTween> extends BaseTween<T> {
     float duration;
     float time;
+
+    TimeTween() {
+
+    }
 
     @Override
     public void updateImpl(float delta) {
@@ -42,5 +46,10 @@ public class TimeTween extends BaseTween {
         super.reset();
         time = 0;
         duration = 0;
+    }
+
+    @Override
+    public T getThis() {
+        return (T) this;
     }
 }

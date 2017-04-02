@@ -54,16 +54,18 @@ public class Tweener {
         int getCount();
     }
 
-    public interface Tween {
+    public interface Tween<T> {
         void update(float delta);
         boolean finished();
         void restart();
-        Tween onUpdate(Runnable callback);
+        T onUpdate(Runnable callback);
+        T onFinish(Runnable callback);
+        abstract T getThis();
     }
 
-    public abstract static class BaseTween implements Tween, Poolable {
+    public abstract static class BaseTween<T> implements Tween<T>, Poolable {
         boolean finished;
-        Runnable onUpdate;
+        Runnable onUpdate, onFinish;
 
         @Override
         public boolean finished() {
@@ -76,9 +78,15 @@ public class Tweener {
         }
 
         @Override
-        public Tween onUpdate(Runnable callback) {
+        public T onUpdate(Runnable callback) {
             this.onUpdate = callback;
-            return this;
+            return getThis();
+        }
+
+        @Override
+        public T onFinish(Runnable callback) {
+            this.onFinish = callback;
+            return getThis();
         }
 
         @Override
@@ -86,11 +94,18 @@ public class Tweener {
             updateImpl(delta);
 
             runOnUpdate();
+
+            if (finished) runOnFinish();
         }
 
         protected void runOnUpdate() {
             if (onUpdate != null)
                 onUpdate.run();
+        }
+
+        protected void runOnFinish() {
+            if (onFinish != null)
+                onFinish.run();
         }
 
         public abstract void updateImpl(float delta);
