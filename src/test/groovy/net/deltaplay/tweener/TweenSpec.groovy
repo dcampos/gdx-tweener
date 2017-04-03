@@ -43,6 +43,19 @@ class TweenSpec extends Specification {
         test1.b == 0f
     }
 
+    def "Values should be updated relatively"() {
+        given:
+        TestAccessor test = new TestAccessor(100f, 100f)
+        Tweener.Tween tween1 = Tweener.tween(test)
+                .to(50f, 50f).duration(1f).relative()
+
+        when:
+        tween1.update(1f)
+        then:
+        test.a == 150f
+        test.b == 150f
+    }
+
     def "Should update time and finish tween"() {
         given:
         Tweener.Tween tween1 = Tweener.tween(test1)
@@ -88,7 +101,7 @@ class TweenSpec extends Specification {
         tween.update(1f)
 
         then:
-        color.equals(Color.WHITE)
+        color == Color.WHITE
     }
 
     def "Should be restarted"() {

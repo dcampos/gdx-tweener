@@ -2,7 +2,6 @@ package net.deltaplay.tweener;
 
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pools;
-import net.deltaplay.tweener.Tweener.BaseTween;
 import net.deltaplay.tweener.Tweener.Tween;
 
 public class TweenManager extends CompositeTween<TweenManager> {
@@ -12,8 +11,8 @@ public class TweenManager extends CompositeTween<TweenManager> {
     public void update(float delta) {
         for (int i = 0; i < tweens.size; i++) {
             Tween tween = tweens.get(i);
+            tween.update(delta);
             if (tween.finished()) remove(tween);
-            else tweens.get(i).update(delta);
         }
     }
 

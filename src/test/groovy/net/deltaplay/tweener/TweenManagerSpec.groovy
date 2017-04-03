@@ -43,6 +43,16 @@ class TweenManagerSpec extends Specification {
 
     }
 
+    def "Tweens should be reset"() {
+        given:
+            Tweener.Tween tween = tween(new TestAccessor(0, 0)).duration(1f)
+            manager.add(tween)
+            manager.update(1.0f)
+
+        expect:
+            !tween.finished()
+    }
+
     def "Values should be updated"() {
         given:
             TestAccessor testAccessor = new TestAccessor(0, 0)
