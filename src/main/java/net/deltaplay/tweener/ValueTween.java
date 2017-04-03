@@ -1,5 +1,6 @@
 package net.deltaplay.tweener;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import net.deltaplay.tweener.Tweener.TweenAccessor;
@@ -198,6 +199,7 @@ public class ValueTween extends TimeTween<ValueTween> {
     @Override
     public void reset() {
         super.reset();
+        Gdx.app.log(getClass().getName(), "reset() called");
         accessor = null;
         object = null;
         initialized = false;
