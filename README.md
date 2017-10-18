@@ -1,4 +1,5 @@
 # Tweener
+[![Build Status](https://travis-ci.org/dcampos/tweener.svg?branch=master)](https://travis-ci.org/dcampos/tweener)
 
 Tweener is a minimal Java/LibGDX library for animating any float property you can write an accessor for.
 
