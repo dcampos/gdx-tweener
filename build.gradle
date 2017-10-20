@@ -55,7 +55,7 @@ publishing {
 
             groupId 'net.deltaplay.tweener'
             artifactId 'tweener'
-            version '0.0.2-SNAPSHOT'
+            version '0.0.5-SNAPSHOT'
 
             artifact sourceJar {
                 classifier "sources"
