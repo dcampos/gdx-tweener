@@ -198,7 +198,6 @@ public class ValueTween extends TimeTween<ValueTween> {
     @Override
     public void reset() {
         super.reset();
-        System.out.println("reset() called");
         accessor = null;
         object = null;
         initialized = false;

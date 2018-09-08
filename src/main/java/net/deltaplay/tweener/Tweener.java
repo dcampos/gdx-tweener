@@ -75,6 +75,8 @@ public class Tweener {
         @Override
         public void reset() {
             finished = false;
+            onUpdate = null;
+            onFinish = null;
         }
 
         @Override
