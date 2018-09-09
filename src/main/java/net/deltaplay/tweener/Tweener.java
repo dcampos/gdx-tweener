@@ -60,10 +60,10 @@ public class Tweener {
         void restart();
         T onUpdate(Runnable callback);
         T onFinish(Runnable callback);
-        abstract T getThis();
+        T getThis();
     }
 
-    public abstract static class BaseTween<T> implements Tween<T>, Poolable {
+    public abstract static class BaseTween<T extends BaseTween> implements Tween<T>, Poolable {
         boolean finished;
         Runnable onUpdate, onFinish;
 
