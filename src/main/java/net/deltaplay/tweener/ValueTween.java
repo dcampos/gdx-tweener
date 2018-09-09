@@ -6,7 +6,7 @@ import net.deltaplay.tweener.Tweener.TweenAccessor;
 
 import java.util.Arrays;
 
-public class ValueTween extends TimeTween<ValueTween> {
+public class ValueTween extends TimeTween {
     private int size = 0;
 
     private float[] from;

@@ -173,6 +173,31 @@ class TweenSpec extends Specification {
         test2.a == 50f
         test2.b == 40f
     }
+
+    def "OnUpdate should be called"() {
+        given:
+        def value = 0
+        def tween1 = Tweener.delay(1f).onUpdate({ -> value += 1 })
+
+        when:
+        tween1.update(1f)
+
+        then:
+        value == 1
+    }
+
+    def "OnFinish should be called"() {
+        given:
+        def value = 0
+        def tween1 = Tweener.delay(1f).onFinish({ -> value = 10 })
+
+        when:
+        tween1.update(1f)
+
+        then:
+        value == 10
+    }
+
 }
 
 class TestAccessor implements Tweener.TweenAccessor<TestAccessor> {
