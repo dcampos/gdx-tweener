@@ -34,7 +34,43 @@ project(":core") {
 
 ## Usage
 
-For now, please have a look at the [samples project](https://github.com/dcampos/tweener-samples).
+Create a TweenManager:
+
+```java
+    private TweenManager tweenManager = new TweenManager();
+```
+
+Add tweens to it:
+
+```java
+    duration = 1.5f;
+    
+    tweenManager.add(
+        Tweener.repeat().set(
+                Tweener.sequence().add(Tweener.parallel()
+                        .add(Tweener.tween(sprite1, SpriteAccessor.ALPHA)
+                                .to(0).duration(duration))
+                        .add(Tweener.tween(sprite1, SpriteAccessor.ROTATION)
+                                .to(360).duration(duration))
+                        .add(Tweener.tween(sprite1, SpriteAccessor.SIZE)
+                                .to(300, 300).duration(duration))
+                ).add(Tweener.parallel()
+                        .add(Tweener.tween(sprite1, SpriteAccessor.ALPHA)
+                                .to(1f).duration(duration))
+                        .add(Tweener.tween(sprite1, SpriteAccessor.ROTATION)
+                                .to(0).duration(duration))
+                        .add(Tweener.tween(sprite1, SpriteAccessor.SIZE)
+                                .to(200, 200).duration(duration))
+               ).add(Tweener.delay(0.5f))
+        );
+    );
+```
+
+Update it:
+
+```java
+tweenManager.update(deltaTime);
+```
 
 ## Related projects
 
