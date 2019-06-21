@@ -34,6 +34,51 @@ project(":core") {
 
 ## Usage
 
+Define one or more accessors:
+
+```java
+    public enum SpriteAccessor implements TweenAccessor<Sprite> {
+
+        POS(2) {
+            @Override
+            public void get(Sprite object, float[] values) {
+                values[0] = object.getX();
+                values[1] = object.getY();
+            }
+
+            @Override
+            public void set(Sprite object, float[] values) {
+                object.setPosition(values[0], values[1]);
+            }
+        },
+        
+        // ...
+
+        ALPHA(1) {
+            @Override
+            public void set(Sprite object, float[] values) {
+                object.setAlpha(values[0]);
+            }
+
+            @Override
+            public void get(Sprite object, float[] values) {
+                values[0] = object.getColor().a;
+            }
+        };
+
+        int count;
+
+        SpriteAccessor(int count) {
+            this.count = count;
+        }
+
+        @Override
+        public int getCount() {
+            return count;
+        }
+    }
+```
+
 Create a TweenManager:
 
 ```java
