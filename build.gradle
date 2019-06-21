@@ -18,7 +18,7 @@ repositories {
 
 ext {
     projectGroup = "tweener"
-    gdxVersion = "1.9.5"
+    gdxVersion = "1.9.9"
     mockitoVersion = "1.10.19"
 }
 
