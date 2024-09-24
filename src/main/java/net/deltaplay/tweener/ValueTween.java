@@ -80,7 +80,7 @@ public class ValueTween extends TimeTween<ValueTween> {
 
         from[0] = v1;
         from[1] = v2;
-        from[1] = v3;
+        from[2] = v3;
 
         hasFrom = true;
         return this;
@@ -122,7 +122,7 @@ public class ValueTween extends TimeTween<ValueTween> {
 
         to[0] = v1;
         to[1] = v2;
-        to[1] = v3;
+        to[2] = v3;
 
         hasTo = true;
         return this;

@@ -6,14 +6,14 @@ import net.deltaplay.tweener.Tweener.BaseTween;
 import net.deltaplay.tweener.Tweener.Tween;
 
 public abstract class CompositeTween<T extends CompositeTween> extends BaseTween<T> {
-    DelayedRemovalArray<Tween> tweens = new DelayedRemovalArray<Tween>();
+    DelayedRemovalArray<Tween> tweens = new DelayedRemovalArray<>();
 
-    public T add(Tween tween) {
+    public T add(Tween<?> tween) {
         tweens.add(tween);
         return getThis();
     }
 
-    public T add(Tween... tweens) {
+    public T add(Tween<?>... tweens) {
         this.tweens.addAll(tweens);
         return getThis();
     }
