@@ -5,8 +5,8 @@ import com.badlogic.gdx.utils.DelayedRemovalArray;
 import net.deltaplay.tweener.Tweener.BaseTween;
 import net.deltaplay.tweener.Tweener.Tween;
 
-public abstract class CompositeTween<T extends CompositeTween> extends BaseTween<T> {
-    DelayedRemovalArray<Tween> tweens = new DelayedRemovalArray<>();
+public abstract class CompositeTween<T extends CompositeTween<T>> extends BaseTween<T> {
+    DelayedRemovalArray<Tween<?>> tweens = new DelayedRemovalArray<>();
 
     public T add(Tween<?> tween) {
         tweens.add(tween);
@@ -33,7 +33,7 @@ public abstract class CompositeTween<T extends CompositeTween> extends BaseTween
         tweens.clear();
     }
 
-    public Array<Tween> getTweens() {
+    public Array<Tween<?>> getTweens() {
         return tweens;
     }
 

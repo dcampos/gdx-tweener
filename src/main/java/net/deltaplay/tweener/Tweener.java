@@ -20,7 +20,7 @@ public class Tweener {
         return Pools.obtain(SequenceTween.class);
     }
 
-    public static SequenceTween sequence(Tween... tweens) {
+    public static SequenceTween sequence(Tween<?>... tweens) {
         return Pools.obtain(SequenceTween.class).add(tweens);
     }
 
@@ -28,7 +28,7 @@ public class Tweener {
         return Pools.obtain(RepeatTween.class);
     }
 
-    public static RepeatTween repeat(Tween tween) {
+    public static RepeatTween repeat(Tween<?> tween) {
         return Pools.obtain(RepeatTween.class).set(tween);
     }
 
@@ -36,12 +36,12 @@ public class Tweener {
         return Pools.obtain(ParallelTween.class);
     }
 
-    public static ParallelTween parallel(Tween... tweens) {
+    public static ParallelTween parallel(Tween<?>... tweens) {
         return Pools.obtain(ParallelTween.class).add(tweens);
     }
 
-    public static TimeTween delay(float delay) {
-        return Pools.obtain(TimeTween.class).duration(delay);
+    public static DelayTween delay(float delay) {
+        return Pools.obtain(DelayTween.class).duration(delay);
     }
 
     public static void setMaxSize(int maxSize) {
@@ -63,7 +63,7 @@ public class Tweener {
         T getThis();
     }
 
-    public abstract static class BaseTween<T extends BaseTween> implements Tween<T>, Poolable {
+    public abstract static class BaseTween<T extends BaseTween<?>> implements Tween<T>, Poolable {
         boolean finished;
         Runnable onUpdate, onFinish;
 
