@@ -26,7 +26,7 @@ project(":core") {
 
     dependencies {
         ...
-        compile "com.github.dcampos:tweener:master-SNAPSHOT"
+        compile "com.github.dcampos:tweener:0.1.0"
     }
     ...
 }
@@ -92,20 +92,20 @@ Add tweens to it:
     
     tweenManager.add(
         Tweener.repeat().set(
-                Tweener.sequence().add(Tweener.parallel()
-                        .add(Tweener.tween(sprite1, SpriteAccessor.ALPHA)
-                                .to(0).duration(duration))
-                        .add(Tweener.tween(sprite1, SpriteAccessor.ROTATION)
-                                .to(360).duration(duration))
-                        .add(Tweener.tween(sprite1, SpriteAccessor.SIZE)
-                                .to(300, 300).duration(duration))
+            Tweener.sequence().add(Tweener.parallel()
+                .add(Tweener.tween(sprite1, SpriteAccessor.ALPHA)
+                    .to(0).duration(duration))
+                .add(Tweener.tween(sprite1, SpriteAccessor.ROTATION)
+                    .to(360).duration(duration))
+                .add(Tweener.tween(sprite1, SpriteAccessor.SIZE)
+                    .to(300, 300).duration(duration))
                 ).add(Tweener.parallel()
-                        .add(Tweener.tween(sprite1, SpriteAccessor.ALPHA)
-                                .to(1f).duration(duration))
-                        .add(Tweener.tween(sprite1, SpriteAccessor.ROTATION)
-                                .to(0).duration(duration))
-                        .add(Tweener.tween(sprite1, SpriteAccessor.SIZE)
-                                .to(200, 200).duration(duration))
+                    .add(Tweener.tween(sprite1, SpriteAccessor.ALPHA)
+                        .to(1f).duration(duration))
+                    .add(Tweener.tween(sprite1, SpriteAccessor.ROTATION)
+                        .to(0).duration(duration))
+                    .add(Tweener.tween(sprite1, SpriteAccessor.SIZE)
+                        .to(200, 200).duration(duration))
                ).add(Tweener.delay(0.5f))
         );
     );
