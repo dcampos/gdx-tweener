@@ -46,3 +46,7 @@ test {
 tasks.register('sourceJar', Jar) {
     from sourceSets.main.allJava
 }
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['-Xlint:unchecked']
+}

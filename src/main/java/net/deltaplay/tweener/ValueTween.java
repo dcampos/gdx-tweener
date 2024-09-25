@@ -142,7 +142,8 @@ public class ValueTween extends TimeTween<ValueTween> {
         return this;
     }
 
-    ValueTween accessor(TweenAccessor accessor) {
+    @SuppressWarnings("unchecked")
+    ValueTween accessor(TweenAccessor<?> accessor) {
         this.accessor = (TweenAccessor<Object>) accessor;
         return this;
     }
